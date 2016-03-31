@@ -324,15 +324,17 @@ function showPosition(position) {
         }
         usersWithDistance[index].distance = distance;
     });
-    $('#myModal').find('#myModalLabel').html("Nice!");
-    $('#myModal').find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + "<br />距离: " + minDistance + "米");
+    var $myModal = $('#myModal');
 
-    var popup = L.popup()
+    $myModal.find('#myModalLabel').html("Nice!");
+    $myModal.find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + "<br />距离: " + minDistance + "米");
+
+    L.popup()
         .setLatLng(L.latLng(minDistanceUser.latLang))
         .setContent("你与" + minDistanceUser.name + "的距离<br />有: " + minDistance + "米")
         .openOn(map);
 
-    $('#myModal').modal('show');
+    $myModal.modal('show');
 }
 
 getLocation();

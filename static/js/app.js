@@ -310,8 +310,8 @@ function showPosition(position) {
         }
         usersWithDistance[index].distance = distance;
     });
-    console.log(minDistanceUser.name, minDistance);
-    $('#alert-body').innerHTML = "离你最近的大神是" + minDistanceUser.name + ",距离: " + minDistance + "米";
+    $('#myModal').find('#myModalLabel').html("Nice!");
+    $('#myModal').find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + ",距离: " + minDistance + "米");
     $('#myModal').modal('show');
 }
 

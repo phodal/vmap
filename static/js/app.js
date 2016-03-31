@@ -257,7 +257,7 @@ var users = [
     },
     {
         name: "Phodal",
-        latLang: [34.2596292,108.6870207]
+        latLang: [34.2173804, 108.8981328]
     }
 ];
 
@@ -313,6 +313,7 @@ function showPosition(position) {
     var usersWithDistance = users;
     var minDistance = 100000000;
     var minDistanceUser = users[0];
+
     var currentLatLng = L.latLng([position.coords.latitude, position.coords.longitude]);
     window.currentLatLng = currentLatLng;
     $.each(users, function(index, user){
@@ -323,15 +324,15 @@ function showPosition(position) {
         }
         usersWithDistance[index].distance = distance;
     });
-    // $('#myModal').find('#myModalLabel').html("Nice!");
-    // $('#myModal').find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + "<br />距离: " + minDistance + "米");
+    $('#myModal').find('#myModalLabel').html("Nice!");
+    $('#myModal').find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + "<br />距离: " + minDistance + "米");
 
     var popup = L.popup()
         .setLatLng(L.latLng(minDistanceUser.latLang))
-        .setContent("离你最近的大神是" + minDistanceUser.name + "<br />距离: " + minDistance + "米")
+        .setContent("你与" + minDistanceUser.name + "的距离<br />有: " + minDistance + "米")
         .openOn(map);
 
-    // $('#myModal').modal('show');
+    $('#myModal').modal('show');
 }
 
 getLocation();

@@ -220,14 +220,55 @@ var CityView = function (feature, oldLayer) {
     });
 };
 
-L.marker([39.9659583,116.340371]).addTo(map).bindPopup("代码家").openPopup();
-L.marker([39.4208999,116.3237109]).addTo(map).bindPopup("justjavac").openPopup();
-L.marker([31.1326943,121.3256528]).addTo(map).bindPopup("阮一峰").openPopup();
-L.marker([30.1756407,119.9266363]).addTo(map).bindPopup("Trinea").openPopup();
-L.marker([30.1756407,119.9266363]).addTo(map).bindPopup("JacksonTian").openPopup();
-L.marker([30.1756407,119.9266363]).addTo(map).bindPopup("lifesinger").openPopup();
-L.marker([23.126275,113.3407774]).addTo(map).bindPopup("云风").openPopup();
-L.marker([39.9590298,116.3579938]).addTo(map).bindPopup("廖雪峰").openPopup();
-L.marker([39.9231061,116.4392567]).addTo(map).bindPopup("Laruence").openPopup();
-L.marker([39.9820396,116.3112008]).addTo(map).bindPopup("ibireme").openPopup();
-L.marker([34.2596292,108.6870207]).addTo(map).bindPopup("Phodal").openPopup();
+var users = [
+    {
+        name: "代码家",
+        latLang: [39.9659583, 116.340371]
+    },
+    {
+        name: "justjavac",
+        latLang: [39.4208999,116.3237109]
+    },
+    {
+        name: "阮一峰",
+        latLang: [31.1326943,121.3256528]
+    },
+    {
+        name: "Trinea",
+        latLang: [30.1756407,119.9266363]
+    },
+    {
+        name: "JacksonTian",
+        latLang: [30.1756407,119.9266363]
+    },
+    {
+        name: "lifesinger",
+        latLang: [30.1756407,119.9266363]
+    },
+    {
+        name: "云风",
+        latLang: [23.126275,113.3407774]
+    },
+    {
+        name: "廖雪峰",
+        latLang: [39.9590298,116.3579938]
+    },
+    {
+        name: "Laruence",
+        latLang: [39.9231061,116.4392567]
+    },
+    {
+        name: "ibireme",
+        latLang: [39.9820396,116.3112008]
+    },
+    {
+        name: "Phodal",
+        latLang: [34.2596292,108.6870207]
+    }
+];
+
+for (var i = 0; i < users.length; i++) {
+    var marker = new L.marker(users[i].latLang)
+        .bindPopup(users[i].name)
+        .addTo(map);
+}

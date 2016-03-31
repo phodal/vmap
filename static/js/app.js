@@ -235,11 +235,11 @@ var users = [
     },
     {
         name: "Trinea",
-        latLang: [30.1756407,119.9266363]
+        latLang: [30.1756407,119.8266363]
     },
     {
         name: "JacksonTian",
-        latLang: [30.1756407,119.9266363]
+        latLang: [30.1756407,119.7266363]
     },
     {
         name: "lifesinger",

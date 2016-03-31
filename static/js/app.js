@@ -298,7 +298,21 @@ function showError(error) {
 }
 
 function showPosition(position) {
-    L.CRS.Earth.distance(L.latLng([30.1756407,119.8266363]), L.latLng([30.1756407,119.7266363]));
+    var usersWithDistance = users;
+    var minDistance = 100000000;
+    var minDistanceUser = users[0];
+    var currentLatLng = L.latLng([position.coords.latitude, position.coords.longitude]);
+    $.each(users, function(index, user){
+        var distance = L.CRS.Earth.distance(currentLatLng, L.latLng(user.latLang));
+        if(distance <= minDistance) {
+            minDistance = distance;
+            minDistanceUser = user;
+        }
+        usersWithDistance[index].distance = distance;
+    });
+    console.log(minDistanceUser.name, minDistance);
+    $('#alert-body').innerHTML = "离你最近的大神是" + minDistanceUser.name + ",距离: " + minDistance + "米";
+    $('#myModal').modal('show');
 }
 
 getLocation();

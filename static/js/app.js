@@ -270,8 +270,11 @@ for (var i = 0; i < users.length; i++) {
         .on('click', function(e) {
             var popup = e.target.getPopup();
             var distance = L.CRS.Earth.distance(window.currentLatLng, L.latLng(e.target._latlng));
+
             var user = popup.getContent();
-            popup.setContent("你与" + user + "的距离<br />有: " + distance + "米");
+            if (user.indexOf("你与") >= 0 || !isNaN(distance)){
+                popup.setContent("你与" + user + "的距离<br />有: " + distance + "米");
+            }
             popup.update();
         });
 }

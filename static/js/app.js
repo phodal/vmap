@@ -312,6 +312,12 @@ function showPosition(position) {
     });
     $('#myModal').find('#myModalLabel').html("Nice!");
     $('#myModal').find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + ",距离: " + minDistance + "米");
+
+    var popup = L.popup()
+        .setLatLng(L.latLng(minDistanceUser.latLang))
+        .setContent("离你最近的大神是" + minDistanceUser.name + ",距离: " + minDistance + "米")
+        .openOn(map);
+
     $('#myModal').modal('show');
 }
 

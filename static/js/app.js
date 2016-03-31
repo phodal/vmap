@@ -266,3 +266,39 @@ for (var i = 0; i < users.length; i++) {
         .bindPopup(users[i].name)
         .addTo(map);
 }
+
+var $AlertBody = $('#alert-body');
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        $AlertBody.innerHTML = "Geolocation is not supported by this browser";
+        $('#myModal').modal('show');
+    }
+}
+
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            $AlertBody.innerHTML = "User denied the request for Geolocation.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            $AlertBody.innerHTML = "Location information is unavailable.";
+            break;
+        case error.TIMEOUT:
+            $AlertBody.innerHTML = "The request to get user location timed out.";
+            break;
+        case error.UNKNOWN_ERROR:
+            $AlertBody.innerHTML = "An unknown error occurred.";
+            break;
+    }
+    $('#myModal').modal('show');
+}
+
+function showPosition(position) {
+    L.CRS.Earth.distance(L.latLng([30.1756407,119.8266363]), L.latLng([30.1756407,119.7266363]));
+}
+
+getLocation();

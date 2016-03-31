@@ -96,10 +96,6 @@ L.control.locate({
     stopFollowingOnDrag: false, // stop following when the map is dragged if `follow` is true (deprecated, see below)
     remainActive: false, // if true locate control remains active on click even if the user's location is in view.
     markerClass: L.circleMarker, // L.circleMarker or L.marker
-    circleStyle: {},  // change the style of the circle around the user's location
-    markerStyle: {},
-    followCircleStyle: {},  // set difference for the style of the circle around the user's location while following
-    followMarkerStyle: {},
     icon: 'glyphicon glyphicon-map-marker',  // class for icon, fa-location-arrow or fa-map-marker
     iconLoading: 'glyphicon glyphicon-map-marker',  // class for loading icon
     iconElementTag: 'span',  // tag for the icon element, span or i
@@ -113,11 +109,9 @@ L.control.locate({
     strings: {
         title: "Show me where I am",  // title of the locate control
         metersUnit: "meters", // string for metric units
-        feetUnit: "feet", // string for imperial units
-        popup: "You are within {distance} {unit} from this point",  // text to appear if user clicks on circle
+        popup: "Your are here",  // text to appear if user clicks on circle
         outsideMapBoundsMsg: "You seem located outside the boundaries of the map" // default message for onLocationOutsideMapBounds
-    },
-    locateOptions: {}  // define location options e.g enableHighAccuracy: true or maxZoom: 10
+    }
 }).addTo(map);
 
 map.on('draw:created', function (e) {

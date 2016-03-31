@@ -302,9 +302,6 @@ function showError(error) {
         case error.TIMEOUT:
             $AlertBody.innerHTML = "The request to get user location timed out.";
             break;
-        case error.UNKNOWN_ERROR:
-            $AlertBody.innerHTML = "An unknown error occurred.";
-            break;
     }
     $('#myModal').modal('show');
 }

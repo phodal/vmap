@@ -261,10 +261,18 @@ var users = [
     }
 ];
 
+window.currentLatLng = [];
+
 for (var i = 0; i < users.length; i++) {
     var marker = new L.marker(users[i].latLang)
         .bindPopup(users[i].name)
-        .addTo(map);
+        .addTo(map)
+        .on('click', function(e) {
+            var popup = e.target.getPopup();
+            var distance = L.CRS.Earth.distance(window.currentLatLng, L.latLng(e.target._latlng));
+            popup.setContent("距离: " + distance + "米");
+            popup.update();
+        });
 }
 
 var $AlertBody = $('#alert-body');
@@ -302,6 +310,7 @@ function showPosition(position) {
     var minDistance = 100000000;
     var minDistanceUser = users[0];
     var currentLatLng = L.latLng([position.coords.latitude, position.coords.longitude]);
+    window.currentLatLng = currentLatLng;
     $.each(users, function(index, user){
         var distance = L.CRS.Earth.distance(currentLatLng, L.latLng(user.latLang));
         if(distance <= minDistance) {
@@ -310,15 +319,15 @@ function showPosition(position) {
         }
         usersWithDistance[index].distance = distance;
     });
-    $('#myModal').find('#myModalLabel').html("Nice!");
-    $('#myModal').find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + ",距离: " + minDistance + "米");
+    // $('#myModal').find('#myModalLabel').html("Nice!");
+    // $('#myModal').find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + "<br />距离: " + minDistance + "米");
 
     var popup = L.popup()
         .setLatLng(L.latLng(minDistanceUser.latLang))
-        .setContent("离你最近的大神是" + minDistanceUser.name + ",距离: " + minDistance + "米")
+        .setContent("离你最近的大神是" + minDistanceUser.name + "<br />距离: " + minDistance + "米")
         .openOn(map);
 
-    $('#myModal').modal('show');
+    // $('#myModal').modal('show');
 }
 
 getLocation();

@@ -1,11 +1,16 @@
 # V Map
 
+完整功能见: [https://github.com/phodal/xunv](https://github.com/phodal/xunv)
 
 **Tech Stack**
 
  - Leaflet
  - Bootstrap
  - jQuery
+
+##添加新用户
+
+修改用户数据文件 ``/static/js/v_data.js``
 
 License
 ---

@@ -180,8 +180,13 @@ var CityView = function (feature, oldLayer) {
 window.currentLatLng = [];
 
 function setVipMarker() {
+    var GitHubIcon = L.icon({
+        iconUrl: 'static/images/github.png',
+        iconSize:     [32, 32] // size of the icon
+    });
+
     for (var i = 0; i < VIP_USERS.length; i++) {
-        var marker = new L.marker(VIP_USERS[i].latLang)
+        var marker = new L.marker(VIP_USERS[i].latLang, {icon: GitHubIcon})
             .bindPopup(VIP_USERS[i].name)
             .addTo(map)
             .on('click', function (e) {

@@ -186,16 +186,19 @@ function setVipMarker() {
     });
 
     for (var i = 0; i < VIP_USERS.length; i++) {
-        var marker = new L.marker(VIP_USERS[i].latLang, {icon: GitHubIcon})
-            .bindPopup(VIP_USERS[i].name)
+        var marker = new L.marker(VIP_USERS[i].latLang, {icon: GitHubIcon});
+
+        marker.user = VIP_USERS[i];
+        marker.bindPopup(VIP_USERS[i].name)
             .addTo(map)
             .on('click', function (e) {
+                console.log(e.target);
                 var popup = e.target.getPopup();
                 var distance = L.CRS.Earth.distance(window.currentLatLng, L.latLng(e.target._latlng));
 
                 var user = popup.getContent();
                 if (user.indexOf("你与") === -1 && !isNaN(distance)) {
-                    var yueHTML = '<a id="yue" class="btn btn-primary" target="_blank" href="http://github.com/' + user + '">立即去约他</a>';
+                    var yueHTML = '<a id="yue" class="btn btn-primary" target="_blank" href="http://github.com/' + e.target.user.username + '">立即去约他</a>';
                     popup.setContent("你与" + user + "的距离<br />有: " + distance + "米<br/>" + yueHTML);
                 }
                 popup.update();

@@ -250,6 +250,7 @@ function showPosition(position) {
 
     $myModal.find('#myModalLabel').html("Nice!");
     $myModal.find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + "<br />距离: " + minDistance + "米");
+    $myModal.find("a#yue").attr("href", "https://github.com/" + minDistanceUser.username);
 
     L.popup()
         .setLatLng(L.latLng(minDistanceUser.latLang))

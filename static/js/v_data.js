@@ -42,5 +42,9 @@ var VIP_USERS = [
     {
         name: "Phodal",
         latLang: [34.2173804, 108.8981328]
+    },
+    {
+        name: "Yanhaijing",
+        latLang: [40.0509597,116.2986095]
     }
 ];

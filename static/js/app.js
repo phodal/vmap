@@ -179,21 +179,25 @@ var CityView = function (feature, oldLayer) {
 
 window.currentLatLng = [];
 
-for (var i = 0; i < VIP_USERS.length; i++) {
-    var marker = new L.marker(VIP_USERS[i].latLang)
-        .bindPopup(VIP_USERS[i].name)
-        .addTo(map)
-        .on('click', function(e) {
-            var popup = e.target.getPopup();
-            var distance = L.CRS.Earth.distance(window.currentLatLng, L.latLng(e.target._latlng));
+function setVipMarker() {
+    for (var i = 0; i < VIP_USERS.length; i++) {
+        var marker = new L.marker(VIP_USERS[i].latLang)
+            .bindPopup(VIP_USERS[i].name)
+            .addTo(map)
+            .on('click', function (e) {
+                var popup = e.target.getPopup();
+                var distance = L.CRS.Earth.distance(window.currentLatLng, L.latLng(e.target._latlng));
 
-            var user = popup.getContent();
-            if (user.indexOf("你与") === -1 && !isNaN(distance)){
-                popup.setContent("你与" + user + "的距离<br />有: " + distance + "米");
-            }
-            popup.update();
-        });
+                var user = popup.getContent();
+                if (user.indexOf("你与") === -1 && !isNaN(distance)) {
+                    popup.setContent("你与" + user + "的距离<br />有: " + distance + "米");
+                }
+                popup.update();
+            });
+    }
+    return marker;
 }
+var marker = setVipMarker();
 
 var $AlertBody = $('#alert-body');
 

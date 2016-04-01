@@ -1,5 +1,10 @@
 var VIP_USERS = [
     {
+        name: "Aaron",
+        username: "zhourunlai",
+        latLang: [30.507905, 114.4114773]
+    },
+    {
         name: "代码家",
         username: "daimajia	",
         latLang: [39.9659583, 116.340371]

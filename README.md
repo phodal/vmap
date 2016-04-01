@@ -8,6 +8,7 @@
  - Bootstrap
  - jQuery
 
+
 ##添加新用户
 
 修改用户数据文件 ``/static/js/v_data.js``
@@ -30,6 +31,10 @@ ps: 经纬度可以由Google Map搜索地址获得.
     latLang: [34.2173804, 108.8981328]
 }
 ```
+
+**欢迎关注我的微信公众号: phodal**
+
+![QRCode](static/images/wechat.jpg)
 
 License
 ---

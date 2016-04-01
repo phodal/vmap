@@ -6,7 +6,7 @@ var VIP_USERS = [
     },
     {
         name: "代码家",
-        username: "daimajia	",
+        username: "daimajia",
         latLang: [39.9659583, 116.340371]
     },
     {
@@ -88,5 +88,10 @@ var VIP_USERS = [
         name: "Phus Lu",
         username: "phuslu",
         latLang: [32.0568391,118.7767715]
+    },
+    {
+        name: "lwh",
+        username: "lwhhhh",
+        latLang: [23.0590053,112.3351932]
     }
 ];

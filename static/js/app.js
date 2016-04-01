@@ -192,7 +192,6 @@ function setVipMarker() {
         marker.bindPopup(VIP_USERS[i].name)
             .addTo(map)
             .on('click', function (e) {
-                console.log(e.target);
                 var popup = e.target.getPopup();
                 var distance = L.CRS.Earth.distance(window.currentLatLng, L.latLng(e.target._latlng));
 

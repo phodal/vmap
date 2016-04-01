@@ -58,5 +58,30 @@ var VIP_USERS = [
         name: "Yanhaijing",
         username: "yanhaijing",
         latLang: [40.0509597,116.2986095]
+    },
+    {
+        name: "民工精髓",
+        username: "xufei",
+        latLang: [31.197644,121.5817308]
+    },
+    {
+        name: "民工精髓",
+        username: "xufei",
+        latLang: [31.197644,121.5817308]
+    },
+    {
+        name: "Jason Lee",
+        username: "huacnlee",
+        latLang: [30.5695652,104.0501573]
+    },
+    {
+        name: "drakeet",
+        username: "drakeet",
+        latLang: [24.934879,118.6435053]
+    },
+    {
+        name: "Phus Lu",
+        username: "phuslu",
+        latLang: [32.0568391,118.7767715]
     }
 ];

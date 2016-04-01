@@ -98,5 +98,10 @@ var VIP_USERS = [
         name: "Shangbin Yang",
         username: "rccoder",
         latLang: [45.7439873245,126.6309825742]
+    },
+    {
+        name: "kevin gao",
+        username: "tmpbook",
+        latLang: [31.1807685,121.5245315]
     }
 ];

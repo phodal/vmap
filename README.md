@@ -12,6 +12,25 @@
 
 修改用户数据文件 ``/static/js/v_data.js``
 
+格式: 
+```
+{
+    name: {用户名},
+    latLang: [{经度}, {纬度}]
+}
+```
+
+ps: 经纬度可以由Google Map搜索地址获得.
+
+如
+
+```
+{
+    name: "Phodal",
+    latLang: [34.2173804, 108.8981328]
+}
+```
+
 License
 ---
 

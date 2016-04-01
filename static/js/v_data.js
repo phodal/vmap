@@ -5,7 +5,7 @@ var VIP_USERS = [
     },
     {
         name: "justjavac",
-        latLang: [39.4208999,116.3237109]
+        latLang: [36.3321875,124.0053165]
     },
     {
         name: "阮一峰",

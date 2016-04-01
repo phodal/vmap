@@ -252,7 +252,7 @@ function showPosition(position) {
     var $myModal = $('#myModal');
 
     $myModal.find('#myModalLabel').html("Nice!");
-    $myModal.find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + "<br />距离: " + minDistance + "米");
+    $myModal.find('#alert-body').html("离你最近的大神是" + minDistanceUser.name + "<br />距离: " + minDistance + "米" + "<br /> 太远了? 来添加大神 <a href='https://github.com/phodal/vmap'>V Map</a>");
     $myModal.find("a#yue").attr("href", "https://github.com/" + minDistanceUser.username);
 
     L.popup()

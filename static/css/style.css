@@ -6,6 +6,10 @@ body {
   text-align: center;
 }
 
+#yue {
+    color: #fff;
+}
+
 #mapid {
     height: 100%;
 }

@@ -195,7 +195,8 @@ function setVipMarker() {
 
                 var user = popup.getContent();
                 if (user.indexOf("你与") === -1 && !isNaN(distance)) {
-                    popup.setContent("你与" + user + "的距离<br />有: " + distance + "米");
+                    var yueHTML = '<a id="yue" class="btn btn-primary" target="_blank" href="http://github.com/' + user + '">立即去约他</a>';
+                    popup.setContent("你与" + user + "的距离<br />有: " + distance + "米<br/>" + yueHTML);
                 }
                 popup.update();
             });

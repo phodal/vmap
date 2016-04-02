@@ -193,12 +193,23 @@ function setVipMarker() {
             .addTo(map)
             .on('click', function (e) {
                 var popup = e.target.getPopup();
+                var githubUserName = e.target.user.username;
                 var distance = L.CRS.Earth.distance(window.currentLatLng, L.latLng(e.target._latlng));
 
                 var user = popup.getContent();
                 if (user.indexOf("你与") === -1 && !isNaN(distance)) {
-                    var yueHTML = '<a id="yue" class="btn btn-primary" target="_blank" href="https://github.com/' + e.target.user.username + '">立即去约他</a>';
-                    popup.setContent("你与" + user + "的距离<br />有: " + distance + "米<br/>" + yueHTML);
+                    var yueHTML = "你与" + user + "的距离<br />有: " + distance + "米<br/>" + '<a id="yue" class="btn btn-primary" target="_blank" href="https://github.com/' + githubUserName + '">立即去约他</a>';
+
+                    popup.setContent(yueHTML);
+                    $.getJSON('https://api.github.com/users/' + githubUserName, function(data){
+                        var githubContent =
+                            '<h3>Github 信息</h3>' +
+                            '<img src="' + data.avatar_url + '" alt="" width="140" height="140"> <br>' +
+                            'Ta在 ' + data.company + '<br />' +
+                            'Ta有' + data.followers + '个粉丝';
+                        popup.setContent(yueHTML + "<br />" + githubContent);
+                        popup.update();
+                    });
                 }
                 popup.update();
             });

@@ -4,7 +4,7 @@
 
 ![V Map Architecture](vmap-arch.png)
 
-###Sub-Project
+###Sub-Module
 
  - [bang](https://github.com/phodal/vmap-bang): the Detail Page generator of V Map
  - [bot](https://github.com/phodal/vmap-bot): Index Data to ElasticSearch

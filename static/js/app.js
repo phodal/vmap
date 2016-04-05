@@ -64,8 +64,10 @@ L.control.locate({
     iconElementTag: 'span',  // tag for the icon element, span or i
     circlePadding: [0, 0], // padding around accuracy circle, value is passed to setBounds
     metric: true,  // use metric or imperial units
-    onLocationError: function(err) {alert(err.message)},  // define an error callback function
-    onLocationOutsideMapBounds:  function(context) { // called when outside map boundaries
+    onLocationError: function (err) {
+        alert(err.message)
+    },
+    onLocationOutsideMapBounds: function (context) { // called when outside map boundaries
         alert(context.options.strings.outsideMapBoundsMsg);
     },
     showPopup: true, // display a popup when the user click on the inner marker
@@ -88,7 +90,7 @@ map.on('draw:created', function (e) {
     drawnItems.addLayer(layer);
 });
 
-var isNationCity = function(locationID) {
+var isNationCity = function (locationID) {
     var HK = '81', Macao = '82', Beijing = '11', Tianjin = '12', Shanghai = '31';
     return $.inArray(locationID, [HK, Macao, Beijing, Tianjin, Shanghai]) !== -1;
 };
@@ -103,11 +105,11 @@ var NationGeoLayer = L.geoJson(ChinaGeo, {
         }).addTo(map);
         layer.on('click', function (e) {
             var scaleLevel = 6;
-            if(isNationCity(feature.properties.id)) {
+            if (isNationCity(feature.properties.id)) {
                 scaleLevel = 8;
             }
             var currentZoom = map.getZoom();
-            if(currentZoom > 8) {
+            if (currentZoom > 8) {
                 scaleLevel = currentZoom;
             }
 
@@ -139,7 +141,7 @@ var ProvinceView = function (feature, oldLayer) {
                 layer.on('click', function (e) {
                     var scaleLevel = 7;
                     var currentZoom = map.getZoom();
-                    if(currentZoom > 8) {
+                    if (currentZoom > 8) {
                         scaleLevel = currentZoom;
                     }
 
@@ -182,7 +184,7 @@ window.currentLatLng = [];
 function setVipMarker() {
     var GitHubIcon = L.icon({
         iconUrl: 'static/images/github.png',
-        iconSize:     [32, 32] // size of the icon
+        iconSize: [32, 32] // size of the icon
     });
 
     for (var i = 0; i < VIP_USERS.length; i++) {
@@ -201,7 +203,7 @@ function setVipMarker() {
                     var yueHTML = "你与" + user + "的距离<br />有: " + distance + "米<br/>" + '<a id="yue" class="btn btn-primary" target="_blank" href="https://github.com/' + githubUserName + '">立即去约他</a>';
 
                     popup.setContent(yueHTML);
-                    $.getJSON('https://api.github.com/users/' + githubUserName, function(data){
+                    $.getJSON('https://api.github.com/users/' + githubUserName, function (data) {
                         var githubContent =
                             '<h3>Github 信息</h3>' +
                             '<img src="' + data.avatar_url + '" alt="" width="140" height="140"> <br>' +
@@ -231,7 +233,7 @@ function getLocation() {
 
 
 function showError(error) {
-    switch(error.code) {
+    switch (error.code) {
         case error.PERMISSION_DENIED:
             $AlertBody.innerHTML = "User denied the request for Geolocation.";
             break;
@@ -252,9 +254,9 @@ function showPosition(position) {
 
     var currentLatLng = L.latLng([position.coords.latitude, position.coords.longitude]);
     window.currentLatLng = currentLatLng;
-    $.each(VIP_USERS, function(index, user){
+    $.each(VIP_USERS, function (index, user) {
         var distance = L.CRS.Earth.distance(currentLatLng, L.latLng(user.latLang));
-        if(distance <= minDistance) {
+        if (distance <= minDistance) {
             minDistance = distance;
             minDistanceUser = user;
         }

@@ -206,7 +206,7 @@ function setVipMarker() {
                     } else {
                         distanceWithUnits = distance + '米'
                     }
-                    var yueTemplate = '你距离{{user}}<br/>有: {{distance}} <br/> <a id="yue" class="btn btn-primary" target="_blank" href="https://github.com/{{githubUserName}}>立即去约他</a>';
+                    var yueTemplate = '你距离{{user}}<br/>有: {{distance}} <br/> <a id="yue" class="btn btn-primary" target="_blank" href="https://github.com/{{githubUserName}}">立即去约他</a>';
 
                     var yueHTML = Mustache.render(yueTemplate, {
                         distance: distanceWithUnits,

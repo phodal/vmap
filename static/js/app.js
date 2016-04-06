@@ -200,10 +200,16 @@ function setVipMarker() {
 
                 var user = popup.getContent();
                 if (user.indexOf("你与") === -1 && !isNaN(distance)) {
-                    var yueTemplate = '你距离{{user}}<br/>有: {{distance}}米 <br/> <a id="yue" class="btn btn-primary" target="_blank" href="https://github.com/{{githubUserName}}>立即去约他</a>';
+                    var distanceWithUnits = '';
+                    if(distance > 1000) {
+                        distanceWithUnits = (distance / 1000).toFixed(2) + '公里'
+                    } else {
+                        distanceWithUnits = distance + '米'
+                    }
+                    var yueTemplate = '你距离{{user}}<br/>有: {{distance}} <br/> <a id="yue" class="btn btn-primary" target="_blank" href="https://github.com/{{githubUserName}}>立即去约他</a>';
 
                     var yueHTML = Mustache.render(yueTemplate, {
-                        distance: distance,
+                        distance: distanceWithUnits,
                         user: user,
                         githubUserName: githubUserName
                     });
@@ -272,7 +278,7 @@ function showPosition(position) {
 
     var alertBodyHTML = Mustache.render(template, {
         username: minDistanceUser.name,
-        minDistance: minDistance
+        minDistance: minDistance.toFixed(2)
     });
     $myModal.find('#alert-body').html(alertBodyHTML);
     $myModal.find("a#yue").attr("href", "https://github.com/" + minDistanceUser.username);

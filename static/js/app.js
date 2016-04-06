@@ -204,12 +204,10 @@ function setVipMarker() {
 
                     popup.setContent(yueHTML);
                     $.getJSON('https://api.github.com/users/' + githubUserName, function (data) {
-                        var githubContent =
-                            '<h3>Github 信息</h3>' +
-                            '<img src="' + data.avatar_url + '" alt="" width="140" height="140"> <br>' +
-                            'Ta在 ' + data.company + '<br />' +
-                            'Ta有' + data.followers + '个粉丝';
-                        popup.setContent(yueHTML + "<br />" + githubContent);
+                        var githubTemplate = '<h3>Github 信息</h3> <img src="{{data.avatar_url}}" alt="" width="140" height="140"> <br> Ta在 {{data.company}} <br /> Ta有 {{data.followers}} 个粉丝';
+
+                        var githubHTML = Mustache.render(githubTemplate, {data: data});
+                        popup.setContent(yueHTML + "<br />" + githubHTML);
                         popup.update();
                     });
                 }

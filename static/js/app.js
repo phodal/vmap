@@ -200,8 +200,13 @@ function setVipMarker() {
 
                 var user = popup.getContent();
                 if (user.indexOf("你与") === -1 && !isNaN(distance)) {
-                    var yueHTML = "你与" + user + "的距离<br />有: " + distance + "米<br/>" + '<a id="yue" class="btn btn-primary" target="_blank" href="https://github.com/' + githubUserName + '">立即去约他</a>';
+                    var yueTemplate = '你距离{{user}}<br/>有: {{distance}}米 <br/> <a id="yue" class="btn btn-primary" target="_blank" href="https://github.com/{{githubUserName}}>立即去约他</a>';
 
+                    var yueHTML = Mustache.render(yueTemplate, {
+                        distance: distance,
+                        user: user,
+                        githubUserName: githubUserName
+                    });
                     popup.setContent(yueHTML);
                     $.getJSON('https://api.github.com/users/' + githubUserName, function (data) {
                         var githubTemplate = '<h3>Github 信息</h3> <img src="{{data.avatar_url}}" alt="" width="140" height="140"> <br> Ta在 {{data.company}} <br /> Ta有 {{data.followers}} 个粉丝';

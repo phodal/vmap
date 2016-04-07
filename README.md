@@ -1,10 +1,15 @@
-# V Map
+#V Map
 
-##Architecture
+V Map是一个以GitHub用户的信息为数据，基于ElasticSearch与Leaflet的先进WebGIS系统。它提供了强大的地理信息搜索功能，你不仅可以通过用户名、地点来搜索用户，你还可以使用自定义形状的多边形搜索（polygon search）:
+
+![多边形搜索](./docs/polygon-search.jpg)
+
+V Map的系统架构是《[CQRS + 微服务](http://mp.weixin.qq.com/s?__biz=MjM5Mjg4NDMwMA==&mid=405256367&idx=1&sn=c2a9ef84ac5115332ffa49c0b6aea829#rd)》，即使用“编程-开发-发布分离”来完成CQRS，并抽象出一系列的微服务。其系统架构如下图所示：
 
 ![V Map Architecture](vmap-arch.png)
 
-###Sub-Module
+子系统
+---
 
  - [bang](https://github.com/phodal/vmap-bang): the Detail Page generator of V Map
  - [bot](https://github.com/phodal/vmap-bot): Index Data to ElasticSearch
@@ -12,15 +17,16 @@
  - [four](https://github.com/phodal/vmap-four): The Data Crawl of V Map
  - [xunv](https://github.com/phodal/xunv): Search Result Page of V Map
 
-###Tech Stack
+Tech Stack
+---
 
  - Leaflet
  - Bootstrap
  - ElasticSearch
  - jQuery
 
-
-###添加新用户
+添加新用户
+---
 
 修改用户数据文件 ``/static/js/v_data.js``
 
@@ -43,7 +49,8 @@ ps: 经纬度可以由Google Map搜索地址获得.
 }
 ```
 
-##截图
+截图
+---
 
 ![Screen Shot](vmap.jpg)
 

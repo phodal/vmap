@@ -8,14 +8,14 @@ V Map的系统架构是《[CQRS + 微服务](http://mp.weixin.qq.com/s?__biz=MjM
 
 ![V Map Architecture](vmap-arch.png)
 
-子系统
+V Map子系统
 ---
 
- - [bang](https://github.com/phodal/vmap-bang): the Detail Page generator of V Map
- - [bot](https://github.com/phodal/vmap-bot): Index Data to ElasticSearch
- - [fang](https://github.com/phodal/vmap-fang): Data Mining of V Map
- - [four](https://github.com/phodal/vmap-four): The Data Crawl of V Map
- - [xunv](https://github.com/phodal/xunv): Search Result Page of V Map
+ - [bang](https://github.com/phodal/vmap-bang) - 用于生成V Map中的用户详情页，及其API。
+ - [bot](https://github.com/phodal/vmap-bot) - 流入数据到ElasticSearch。
+ - [fang](https://github.com/phodal/vmap-fang) - 生成并挖掘用户的数据。
+ - [four](https://github.com/phodal/vmap-four) - 抓取用户数据的爬虫。
+ - [xunv](https://github.com/phodal/xunv) - SEO用途的用户详细页。
 
 Tech Stack
 ---

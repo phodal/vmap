@@ -49,47 +49,6 @@ map.addControl(drawControl);
 var drawnItems = new L.FeatureGroup();
 map.addLayer(drawnItems);
 
-L.control.locate({
-    position: 'topleft',  // set the location of the control
-    layer: undefined,  // use your own layer for the location marker, creates a new layer by default
-    drawCircle: true,  // controls whether a circle is drawn that shows the uncertainty about the location
-    follow: false,  // follow the user's location
-    setView: true, // automatically sets the map view to the user's location, enabled if `follow` is true
-    keepCurrentZoomLevel: false, // keep the current map zoom level when displaying the user's location. (if `false`, use maxZoom)
-    stopFollowingOnDrag: false, // stop following when the map is dragged if `follow` is true (deprecated, see below)
-    remainActive: false, // if true locate control remains active on click even if the user's location is in view.
-    markerClass: L.circleMarker, // L.circleMarker or L.marker
-    icon: 'glyphicon glyphicon-map-marker',  // class for icon, fa-location-arrow or fa-map-marker
-    iconLoading: 'glyphicon glyphicon-map-marker',  // class for loading icon
-    iconElementTag: 'span',  // tag for the icon element, span or i
-    circlePadding: [0, 0], // padding around accuracy circle, value is passed to setBounds
-    metric: true,  // use metric or imperial units
-    onLocationError: function (err) {
-        alert(err.message)
-    },
-    onLocationOutsideMapBounds: function (context) { // called when outside map boundaries
-        alert(context.options.strings.outsideMapBoundsMsg);
-    },
-    showPopup: true, // display a popup when the user click on the inner marker
-    strings: {
-        title: "Show me where I am",  // title of the locate control
-        metersUnit: "meters", // string for metric units
-        popup: "Your are here",  // text to appear if user clicks on circle
-        outsideMapBoundsMsg: "You seem located outside the boundaries of the map" // default message for onLocationOutsideMapBounds
-    }
-}).addTo(map);
-
-map.on('draw:created', function (e) {
-    var type = e.layerType,
-        layer = e.layer;
-
-    if (type === 'marker') {
-        layer.bindPopup('A popup!');
-    }
-
-    drawnItems.addLayer(layer);
-});
-
 var isNationCity = function (locationID) {
     var HK = '81', Macao = '82', Beijing = '11', Tianjin = '12', Shanghai = '31';
     return $.inArray(locationID, [HK, Macao, Beijing, Tianjin, Shanghai]) !== -1;

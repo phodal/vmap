@@ -11,14 +11,8 @@ var editableLayers = new L.FeatureGroup();
 map.addLayer(editableLayers);
 
 var options = {
-    position: 'topright',
+    position: 'topleft',
     draw: {
-        polyline: {
-            shapeOptions: {
-                color: '#f357a1',
-                weight: 10
-            }
-        },
         polygon: {
             allowIntersection: false, // Restricts shapes to simple polygons
             drawError: {
@@ -29,16 +23,10 @@ var options = {
                 color: '#bada55'
             }
         },
-        circle: false, // Turns off this drawing tool
-        rectangle: {
-            shapeOptions: {
-                clickable: false
-            }
-        }
-    },
-    edit: {
-        featureGroup: editableLayers, //REQUIRED!!
-        remove: false
+        marker: false,
+        polyline: false,
+        circle: false,
+        rectangle: false
     }
 };
 

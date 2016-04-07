@@ -54,11 +54,6 @@ ps: 经纬度可以由Google Map搜索地址获得.
 
 ![Screen Shot](vmap.jpg)
 
-
-**欢迎关注我的微信公众号: phodal**
-
-![QRCode](static/images/wechat.jpg)
-
 License
 ---
 

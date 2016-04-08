@@ -64,7 +64,7 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
                 var id = /-(\d{1,2})/.exec(urlHash)[1];
                 handleProvinceChange(id);
             }
-            if(isCityChange) {
+            if (isCityChange) {
                 var id = /-(\d{1,4})/.exec(urlHash)[1];
                 if (!MapView.isNationCity(id.substring(0, 2))) {
                     handleCityChange(id);
@@ -122,6 +122,9 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
                         }
 
                         var properties = feature.properties;
+
+                        $(".nation-link .city-dropdown .btn:first-child").text(feature.properties.name);
+
                         if (!MapView.isNationCity(properties.id.substring(0, 2))) {
                             that.map.setView([properties.cp[1], properties.cp[0]], scaleLevel, {animation: true});
                             that.CityView(feature, ProvinceLayer)

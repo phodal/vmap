@@ -172,5 +172,5 @@ define(['leaflet', 'jquery', 'mustache', 'js/data', 'js/MapView', 'js/LinkCity',
         $myModal.modal('show');
     }
 
-    // getLocation();
+    getLocation();
 });

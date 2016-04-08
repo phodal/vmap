@@ -22,7 +22,8 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
                     })
                 }).addTo(that.map);
                 layer.on('click', function (e) {
-                    that.ProvinceView(feature, NationGeoLayer)
+                    $(".nation-link .btn:first-child").text(feature.properties.name);
+                    that.ProvinceView(feature, NationGeoLayer);
                 });
             },
             style: that.MapStyle

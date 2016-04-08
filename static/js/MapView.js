@@ -1,4 +1,4 @@
-define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
+define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, LinkCity) {
     var ChinaGeo = Data.ChinaGeo;
     var MapView = function (map) {
         this.map = map;
@@ -74,6 +74,14 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
             }
 
             that.map.setView([data.cp[1], data.cp[0]], scaleLevel, {animation: true});
+            var cityMenu = LinkCity.generateMenu(data.features, '#city').html();
+            var cityHtml = '<div class="city-dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">市/区<span class="caret"></span></button><ul data-spy="scroll" class="city-dropdown dropdown-menu scrollable-menu" role="menu">' + cityMenu + '</ul></div>';
+            $(cityHtml).insertAfter( ".province-dropdown");
+            $(".city-dropdown li a").click(function(){
+                var $nationButton = $(".city-dropdown .btn:first-child");
+                $nationButton.text($(this).text());
+                $nationButton.val($(this).text());
+            });
 
             var ProvinceLayer = L.geoJson(data, {
                 onEachFeature: function (feature, layer) {

@@ -16,7 +16,7 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
             return item;
         };
 
-        var $menu = $("<ul class='dropdown-menu'></ul>");
+        var $menu = $("<ul id='dropdown' class='dropdown-menu scrollable-menu' role='menu'></ul>");
         $.each(data, function () {
             $menu.append(
                 getMenuItem(this)
@@ -38,6 +38,8 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
             div.innerHTML = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">中国<span class="caret"></span></button>' + menu.prop("outerHTML") + '</div>';
 
             div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+            L.DomEvent.disableScrollPropagation(div);
+            L.DomEvent.disableClickPropagation(div);
             return div;
         };
 

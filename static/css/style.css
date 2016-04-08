@@ -26,6 +26,12 @@ body {
 .nation-link .dropdown {
     margin-right: 150px;
 }
+
+.dropdown-menu.scrollable-menu {
+    height: auto;
+    max-height: 480px;
+    overflow-x: hidden;
+}
 /*!
  * IE10 viewport hack for Surface/desktop Windows 8 bug
  * Copyright 2014-2015 Twitter, Inc.

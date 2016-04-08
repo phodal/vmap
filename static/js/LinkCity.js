@@ -32,7 +32,7 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
         var legend = L.control({position: 'topright'});
 
         legend.onAdd = function (map) {
-            var div = L.DomUtil.create('div', 'info legend');
+            var div = L.DomUtil.create('div', 'nation-link');
             var menu = LinkCity.generateMenu(ChinaGeo, div);
 
             div.innerHTML = '<div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">中国<span class="caret"></span></button>' + menu.prop("outerHTML") + '</div>';
@@ -40,7 +40,7 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
             div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
             return div;
         };
-        
+
         legend.addTo(that.map);
     };
 

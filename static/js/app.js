@@ -1,6 +1,5 @@
 define(['leaflet', 'jquery', 'mustache', 'js/data', 'js/MapView', 'bootstrap', 'leaflet.ajax', 'leaflet.draw'], function (L, $, Mustache, Data, MapView) {
     var VIP_USERS = Data.VIP_USERS;
-    var ChinaGeo = Data.ChinaGeo;
 
     var chinaCenterPoint = [35.73, 109.59];
     var map = L.map('mapid').setView(chinaCenterPoint, 4);
@@ -41,7 +40,19 @@ define(['leaflet', 'jquery', 'mustache', 'js/data', 'js/MapView', 'bootstrap', '
 // Initialise the FeatureGroup to store editable layers
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
-    
+    map.addControl(drawControl);
+
+    map.on('draw:created', function (e) {
+        var type = e.layerType,
+            layer = e.layer;
+
+        if (type === 'marker') {
+            layer.bindPopup('A popup!');
+        }
+
+        drawnItems.addLayer(layer);
+    });
+
     var mapView = new MapView(map);
     mapView.render();
 

@@ -2,10 +2,16 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
     var ChinaGeo = Data.ChinaGeo;
     var MapView = function (map) {
         this.map = map;
+        this.MapStyle = {
+            "color": "#ff7800",
+            "weight": 2,
+            "opacity": 0.2
+        };
     };
 
     MapView.prototype.render = function () {
         var that = this;
+
         var NationGeoLayer = L.geoJson(ChinaGeo, {
             onEachFeature: function (feature, layer) {
                 var label = L.marker(layer.getBounds().getCenter(), {
@@ -28,11 +34,7 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
                     that.ProvinceView(feature, NationGeoLayer)
                 });
             },
-            style: {
-                "color": "#ff7800",
-                "weight": 2,
-                "opacity": 0.2
-            }
+            style: that.MapStyle
         });
         NationGeoLayer.addTo(that.map);
     };

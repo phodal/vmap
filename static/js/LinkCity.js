@@ -5,7 +5,13 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
 
     LinkCity.generateMenu = function (data, levelHash) {
         var getMenuItem = function (itemData) {
-            var item = $("<li role='presentation' data-geo='[" + itemData.properties.cp + "]'>")
+            var geo = [];
+            if(levelHash.indexOf("province") === 0) {
+                geo = itemData.properties.cp;
+            } else {
+                geo = itemData.geometry.coordinates[0][0];
+            }
+            var item = $("<li role='presentation' data-geo='[" + geo + "]'>")
                 .append(
                     $("<a>", {
                         href: levelHash + '-' + itemData.properties.id,

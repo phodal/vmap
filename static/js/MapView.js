@@ -140,7 +140,8 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
     };
 
 
-    function createZonesDropdown(data) {
+    MapView.prototype.createZonesDropdown = function (data) {
+        var that = this;
         var cityMenu = LinkCity.generateMenu(data.features, '#zone').html();
         var cityHtml = '<div class="zone-dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">区/县<span class="caret"></span></button><ul data-spy="scroll" class="zone-dropdown-ul dropdown-menu scrollable-menu" role="menu">' + cityMenu + '</ul></div>';
 
@@ -150,6 +151,8 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
         $(cityHtml).insertAfter("div.city-dropdown");
 
         $(".zone-dropdown li a").click(function () {
+            var getInfo = $(this).parent().data('geo');
+            that.map.setView([getInfo[1], getInfo[0]], 10, {animation: true});
             var $nationButton = $(".nation-link .zone-dropdown .btn:first-child");
             $nationButton.text($(this).text());
             $nationButton.val($(this).text());
@@ -165,7 +168,7 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
         }
 
         $.getJSON("/static/data/city/" + cityID + ".json", function (data) {
-            createZonesDropdown(data);
+            that.createZonesDropdown(data);
             var CityLayer = L.geoJson(data, {
                 onEachFeature: function (feature, layer) {
                     var label = L.marker(layer.getBounds().getCenter(), {

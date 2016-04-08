@@ -52,8 +52,9 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
 
     LinkCity.prototype.bindEvents = function () {
         $(".dropdown-menu li a").click(function(){
-            $(".btn:first-child").text($(this).text());
-            $(".btn:first-child").val($(this).text());
+            var $nationButton = $(".nation-link .btn:first-child");
+            $nationButton.text($(this).text());
+            $nationButton.val($(this).text());
         });
     };
 

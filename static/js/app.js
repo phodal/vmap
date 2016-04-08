@@ -1,4 +1,4 @@
-define(['leaflet', 'jquery', 'mustache', 'js/data', 'js/MapView', 'bootstrap', 'leaflet.ajax', 'leaflet.draw'], function (L, $, Mustache, Data, MapView) {
+define(['leaflet', 'jquery', 'mustache', 'js/data', 'js/MapView', 'js/LinkCity', 'bootstrap', 'leaflet.ajax', 'leaflet.draw'], function (L, $, Mustache, Data, MapView, LinkCity) {
     var VIP_USERS = Data.VIP_USERS;
 
     var chinaCenterPoint = [35.73, 109.59];
@@ -58,15 +58,8 @@ define(['leaflet', 'jquery', 'mustache', 'js/data', 'js/MapView', 'bootstrap', '
 
     window.currentLatLng = [];
 
-
-    var legend = L.control({position: 'topright'});
-    legend.onAdd = function (map) {
-        var div = L.DomUtil.create('div', 'info legend');
-        div.innerHTML = '<select><option>1</option><option>2</option><option>3</option></select>';
-        div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
-        return div;
-    };
-    legend.addTo(map);
+    var linkCity = new LinkCity(map);
+    linkCity.render();
 
     function renderUserMarker() {
         var GitHubIcon = L.icon({
@@ -179,5 +172,5 @@ define(['leaflet', 'jquery', 'mustache', 'js/data', 'js/MapView', 'bootstrap', '
         $myModal.modal('show');
     }
 
-    getLocation();
+    // getLocation();
 });

@@ -73,6 +73,22 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
         });
     };
 
+    function createProvinceDropdown(data) {
+        var cityMenu = LinkCity.generateMenu(data.features, '#city').html();
+        var cityHtml = '<div class="city-dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">市/区<span class="caret"></span></button><ul data-spy="scroll" class="city-dropdown dropdown-menu scrollable-menu" role="menu">' + cityMenu + '</ul></div>';
+
+        if ($(".city-dropdown").length) {
+            $(".city-dropdown").remove()
+        }
+        $(cityHtml).insertAfter(".province-dropdown");
+
+        $(".city-dropdown li a").click(function () {
+            var $nationButton = $(".nation-link .city-dropdown .btn:first-child");
+            $nationButton.text($(this).text());
+            $nationButton.val($(this).text());
+        });
+    }
+
     MapView.prototype.ProvinceView = function (feature, oldLayer) {
         // map.removeLayer(oldLayer);
         var that = this;
@@ -88,19 +104,7 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
             }
 
             that.map.setView([data.cp[1], data.cp[0]], scaleLevel, {animation: true});
-            var cityMenu = LinkCity.generateMenu(data.features, '#city').html();
-            var cityHtml = '<div class="city-dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">市/区<span class="caret"></span></button><ul data-spy="scroll" class="city-dropdown dropdown-menu scrollable-menu" role="menu">' + cityMenu + '</ul></div>';
-
-            if ($(".city-dropdown").length) {
-                $(".city-dropdown").remove()
-            }
-            $(cityHtml).insertAfter(".province-dropdown");
-
-            $(".city-dropdown li a").click(function () {
-                var $nationButton = $(".nation-link .city-dropdown .btn:first-child");
-                $nationButton.text($(this).text());
-                $nationButton.val($(this).text());
-            });
+            createProvinceDropdown(data);
 
             var ProvinceLayer = L.geoJson(data, {
                 onEachFeature: function (feature, layer) {

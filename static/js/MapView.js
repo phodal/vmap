@@ -22,16 +22,6 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
                     })
                 }).addTo(that.map);
                 layer.on('click', function (e) {
-                    var scaleLevel = 6;
-                    if (MapView.isNationCity(feature.properties.id)) {
-                        scaleLevel = 8;
-                    }
-                    var currentZoom = that.map.getZoom();
-                    if (currentZoom > 8) {
-                        scaleLevel = currentZoom;
-                    }
-
-                    that.map.setView([feature.properties.cp[1], feature.properties.cp[0]], scaleLevel, {animation: true});
                     that.ProvinceView(feature, NationGeoLayer)
                 });
             },
@@ -67,6 +57,17 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
         var that = this;
         var provinceID = feature.properties.id;
         $.getJSON("/static/data/province/" + provinceID + ".json", function (data) {
+            var scaleLevel = 6;
+            if (MapView.isNationCity(provinceID)) {
+                scaleLevel = 8;
+            }
+            var currentZoom = that.map.getZoom();
+            if (currentZoom > 8) {
+                scaleLevel = currentZoom;
+            }
+
+            that.map.setView([data.cp[1], data.cp[0]], scaleLevel, {animation: true});
+
             var ProvinceLayer = L.geoJson(data, {
                 onEachFeature: function (feature, layer) {
                     var label = L.marker(layer.getBounds().getCenter(), {

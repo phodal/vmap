@@ -7,6 +7,7 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
             "weight": 2,
             "opacity": 0.2
         };
+        this.bindEvents();
     };
 
     MapView.prototype.render = function () {
@@ -44,6 +45,22 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
         return $.inArray(locationID, [HK, Macao, Beijing, Tianjin, Shanghai]) !== -1;
     };
 
+    MapView.prototype.bindEvents = function () {
+        var that = this;
+        $(window).bind('hashchange', function (e) {
+            var urlHash = window.location.hash;
+
+            if (urlHash.indexOf("#province") === 0) {
+                var id = /-(\d{1,2})/.exec(urlHash)[1];
+
+                that.ProvinceView({
+                    properties: {
+                        id: id
+                    }
+                })
+            }
+        });
+    };
 
     MapView.prototype.ProvinceView = function (feature, oldLayer) {
         // map.removeLayer(oldLayer);

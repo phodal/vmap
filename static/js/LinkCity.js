@@ -9,7 +9,7 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
             var item = $("<li role='presentation'>")
                 .append(
                     $("<a>", {
-                        href: '#' + itemData.properties.id,
+                        href: '#province-' + itemData.properties.id,
                         html: itemData.properties.name,
                         role: 'menuitem'
                     }));

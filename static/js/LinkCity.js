@@ -47,6 +47,14 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
         };
 
         legend.addTo(that.map);
+        that.bindEvents();
+    };
+
+    LinkCity.prototype.bindEvents = function () {
+        $(".dropdown-menu li a").click(function(){
+            $(".btn:first-child").text($(this).text());
+            $(".btn:first-child").val($(this).text());
+        });
     };
 
     return LinkCity;

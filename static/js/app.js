@@ -132,7 +132,7 @@ define(['leaflet', 'jquery', 'mustache', 'js/data', 'bootstrap', 'leaflet.ajax',
 
     window.currentLatLng = [];
 
-    function setVipMarker() {
+    function renderUserMarker() {
         var GitHubIcon = L.icon({
             iconUrl: 'static/images/github.png',
             iconSize: [32, 32] // size of the icon
@@ -179,7 +179,7 @@ define(['leaflet', 'jquery', 'mustache', 'js/data', 'bootstrap', 'leaflet.ajax',
         return marker;
     }
 
-    var marker = setVipMarker();
+    renderUserMarker();
 
     var $AlertBody = $('#alert-body');
 

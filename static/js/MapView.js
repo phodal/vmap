@@ -40,19 +40,11 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
         var that = this;
 
         function handleProvinceChange(id) {
-            that.ProvinceView({
-                properties: {
-                    id: id
-                }
-            })
+            that.ProvinceView({properties: {id: id}})
         }
 
         function handleCityChange(id) {
-            that.CityView({
-                properties: {
-                    id: id
-                }
-            })
+            that.CityView({properties: {id: id}})
         }
 
         $(window).bind('hashchange', function (e) {
@@ -157,7 +149,7 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
             $nationButton.text($(this).text());
             $nationButton.val($(this).text());
         });
-    }
+    };
 
     MapView.prototype.CityView = function (feature, oldLayer) {
         // map.removeLayer(oldLayer);

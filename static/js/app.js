@@ -2,7 +2,8 @@ define(['leaflet', 'jquery', 'mustache', 'js/data', 'bootstrap', 'leaflet.ajax',
     var VIP_USERS = Data.VIP_USERS;
     var ChinaGeo = Data.ChinaGeo;
 
-    var map = L.map('mapid').setView([35.73, 109.59], 4);
+    var chinaCenterPoint = [35.73, 109.59];
+    var map = L.map('mapid').setView(chinaCenterPoint, 4);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',

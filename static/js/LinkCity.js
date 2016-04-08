@@ -1,5 +1,8 @@
 define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
-    var ChinaGeo = Data.ChinaGeo;
+    function sortNumber(a,b) {
+        return parseInt(a.properties.id) - parseInt(b.properties.id)
+    }
+    var ChinaGeo = Data.ChinaGeo.sort(sortNumber);
     var LinkCity = function (map) {
         this.map = map;
     };

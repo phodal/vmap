@@ -77,8 +77,8 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
         var cityMenu = LinkCity.generateMenu(data.features, '#city').html();
         var cityHtml = '<div class="city-dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">市/区<span class="caret"></span></button><ul data-spy="scroll" class="city-dropdown dropdown-menu scrollable-menu" role="menu">' + cityMenu + '</ul></div>';
 
-        if ($(".city-dropdown").length) {
-            $(".city-dropdown").remove()
+        if ($("div.city-dropdown").length) {
+            $("div.city-dropdown").remove()
         }
         $(cityHtml).insertAfter(".province-dropdown");
 
@@ -136,6 +136,23 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
         });
     };
 
+
+    function createCityDropdown(data) {
+        var cityMenu = LinkCity.generateMenu(data.features, '#zone').html();
+        var cityHtml = '<div class="zone-dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">区/县<span class="caret"></span></button><ul data-spy="scroll" class="zone-dropdown-ul dropdown-menu scrollable-menu" role="menu">' + cityMenu + '</ul></div>';
+
+        if ($("div.zone-dropdown").length) {
+            $("div.zone-dropdown").remove()
+        }
+        $(cityHtml).insertAfter(".city-dropdown");
+
+        $(".zone-dropdown li a").click(function () {
+            var $nationButton = $(".nation-link .zone-dropdown .btn:first-child");
+            $nationButton.text($(this).text());
+            $nationButton.val($(this).text());
+        });
+    }
+
     MapView.prototype.CityView = function (feature, oldLayer) {
         // map.removeLayer(oldLayer);
         var that = this;
@@ -145,6 +162,7 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
         }
 
         $.getJSON("/static/data/city/" + cityID + ".json", function (data) {
+            createCityDropdown(data);
             var CityLayer = L.geoJson(data, {
                 onEachFeature: function (feature, layer) {
                     var label = L.marker(layer.getBounds().getCenter(), {
@@ -153,6 +171,9 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
                             html: feature.properties.name
                         })
                     }).addTo(that.map);
+                    layer.on('click', function (e) {
+                        $(".nation-link .zone-dropdown .btn:first-child").text(feature.properties.name);
+                    });
                 }
             });
             CityLayer.addTo(that.map);

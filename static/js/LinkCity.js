@@ -5,7 +5,7 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
 
     LinkCity.generateMenu = function (data, levelHash) {
         var getMenuItem = function (itemData) {
-            var item = $("<li role='presentation'>")
+            var item = $("<li role='presentation' data-geo='[" + itemData.properties.cp + "]'>")
                 .append(
                     $("<a>", {
                         href: levelHash + '-' + itemData.properties.id,

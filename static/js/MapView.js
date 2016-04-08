@@ -73,7 +73,8 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
         });
     };
 
-    function createCitiesDropdown(data) {
+    MapView.prototype.createCitiesDropdown = function (data) {
+        var that = this;
         var cityMenu = LinkCity.generateMenu(data.features, '#city').html();
         var cityHtml = '<div class="city-dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">市/区<span class="caret"></span></button><ul data-spy="scroll" class="city-dropdown dropdown-menu scrollable-menu" role="menu">' + cityMenu + '</ul></div>';
 
@@ -83,6 +84,8 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
         $(cityHtml).insertAfter(".nation-dropdown");
 
         $(".city-dropdown li a").click(function () {
+            var getInfo = $(this).parent().data('geo');
+            that.map.setView([getInfo[1], getInfo[0]], 8, {animation: true});
             var $nationButton = $(".nation-link .city-dropdown .btn:first-child");
             $nationButton.text($(this).text());
             $nationButton.val($(this).text());
@@ -104,7 +107,7 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
             }
 
             that.map.setView([data.cp[1], data.cp[0]], scaleLevel, {animation: true});
-            createCitiesDropdown(data);
+            that.createCitiesDropdown(data);
 
             var ProvinceLayer = L.geoJson(data, {
                 onEachFeature: function (feature, layer) {

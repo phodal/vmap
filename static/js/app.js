@@ -41,12 +41,7 @@ define(['leaflet', 'jquery', 'mustache', 'js/data', 'js/MapView', 'bootstrap', '
 // Initialise the FeatureGroup to store editable layers
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
-
-    var isNationCity = function (locationID) {
-        var HK = '81', Macao = '82', Beijing = '11', Tianjin = '12', Shanghai = '31';
-        return $.inArray(locationID, [HK, Macao, Beijing, Tianjin, Shanghai]) !== -1;
-    };
-
+    
     var mapView = new MapView(map);
     mapView.render();
 

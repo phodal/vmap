@@ -16,7 +16,7 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
             return item;
         };
 
-        var $menu = $("<ul id='dropdown' class='dropdown-menu scrollable-menu' role='menu'></ul>");
+        var $menu = $('<ul data-spy="scroll" class="dropdown-menu scrollable-menu" role="menu"></ul>');
         $.each(data, function () {
             $menu.append(
                 getMenuItem(this)

@@ -37,17 +37,23 @@ define(['leaflet', 'js/data', 'jquery'], function (L, Data, $) {
 
     MapView.prototype.bindEvents = function () {
         var that = this;
+
+        function handleProvinceChange(urlHash) {
+            var id = /-(\d{1,2})/.exec(urlHash)[1];
+
+            that.ProvinceView({
+                properties: {
+                    id: id
+                }
+            })
+        }
+
         $(window).bind('hashchange', function (e) {
             var urlHash = window.location.hash;
 
-            if (urlHash.indexOf("#province") === 0) {
-                var id = /-(\d{1,2})/.exec(urlHash)[1];
-
-                that.ProvinceView({
-                    properties: {
-                        id: id
-                    }
-                })
+            var isProvinceChange = urlHash.indexOf("#province") === 0;
+            if (isProvinceChange) {
+                handleProvinceChange(urlHash);
             }
         });
     };

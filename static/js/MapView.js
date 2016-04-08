@@ -39,10 +39,16 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
     MapView.prototype.bindEvents = function () {
         var that = this;
 
-        function handleProvinceChange(urlHash) {
-            var id = /-(\d{1,2})/.exec(urlHash)[1];
-
+        function handleProvinceChange(id) {
             that.ProvinceView({
+                properties: {
+                    id: id
+                }
+            })
+        }
+
+        function handleCityChange(id) {
+            that.CityView({
                 properties: {
                     id: id
                 }
@@ -53,8 +59,16 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
             var urlHash = window.location.hash;
 
             var isProvinceChange = urlHash.indexOf("#province") === 0;
+            var isCityChange = urlHash.indexOf("#city") === 0;
             if (isProvinceChange) {
-                handleProvinceChange(urlHash);
+                var id = /-(\d{1,2})/.exec(urlHash)[1];
+                handleProvinceChange(id);
+            }
+            if(isCityChange) {
+                var id = /-(\d{1,4})/.exec(urlHash)[1];
+                if (!MapView.isNationCity(id.substring(0, 2))) {
+                    handleCityChange(id);
+                }
             }
         });
     };

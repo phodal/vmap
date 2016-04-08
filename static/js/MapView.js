@@ -174,6 +174,11 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
                     layer.on('click', function (e) {
                         $(".nation-link .zone-dropdown .btn:first-child").text(feature.properties.name);
                     });
+                },
+                style: {
+                    "color": "#fff",
+                    "weight": 2,
+                    "opacity": 0.8
                 }
             });
             CityLayer.addTo(that.map);

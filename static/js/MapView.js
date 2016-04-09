@@ -110,18 +110,10 @@ define(['leaflet', 'js/data', 'jquery', 'js/LinkCity'], function (L, Data, $, Li
                         })
                     }).addTo(that.map);
                     layer.on('click', function (e) {
-                        var scaleLevel = 7;
-                        var currentZoom = that.map.getZoom();
-                        if (currentZoom > 8) {
-                            scaleLevel = currentZoom;
-                        }
-
                         var properties = feature.properties;
-
                         $(".nation-link .city-dropdown .btn:first-child").text(feature.properties.name);
 
                         if (!MapView.isNationCity(properties.id.substring(0, 2))) {
-                            that.map.setView([properties.cp[1], properties.cp[0]], scaleLevel, {animation: true});
                             that.CityView(feature, ProvinceLayer)
                         }
                     });

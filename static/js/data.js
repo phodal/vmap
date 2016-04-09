@@ -146,6 +146,11 @@ define(function () {
             name: "闫志强",
             username: "jonneyyan",
             latLang: [40.0799685,116.3206372]
+        },
+        {
+            name: "马新春",
+            username: "codecly",
+            latLang: [31.778115,117.1668593]
         }
     ];
 

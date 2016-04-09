@@ -1,6 +1,8 @@
 #V Map
 
-V Map是一个以GitHub用户的信息为数据，基于ElasticSearch与Leaflet的先进WebGIS系统。它提供了强大的地理信息搜索功能，你不仅可以通过用户名、地点来搜索用户，你还可以使用自定义形状的多边形搜索（polygon search）:
+V Map是一个以GitHub用户的信息为数据，基于ElasticSearch与Leaflet的先进WebGIS系统。它提供了强大的地理信息搜索功能——可以从省市区联动再跳转到地图上的相应位置，也可以根据你所选择的地图上的相应位置选择相应的省市区。
+
+并且，你不仅可以通过用户名、地点来搜索用户，你还可以使用自定义形状的多边形搜索（polygon search）:
 
 ![多边形搜索](./docs/polygon-search.jpg)
 

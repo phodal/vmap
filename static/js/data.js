@@ -149,7 +149,7 @@ define(function () {
         },
         {
             name: "马新春",
-            username: "codecly",
+            username: "codecly259",
             latLang: [31.778115,117.1668593]
         }
     ];

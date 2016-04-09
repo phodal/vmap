@@ -92,5 +92,11 @@
 从地图到地点上显示
 ---
 
-从地图上到地点就比较简单了，
+从地图上到地点就比较简单了，点击时修改对应的text即可。
 
+![VMap Click ](./vmap-click-handler.jpg)
+
+Demo
+---
+
+在线Demo见： [http://vmap.phodal.com/](http://vmap.phodal.com/)

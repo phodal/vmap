@@ -101,4 +101,7 @@ Demo
 
 在线Demo见： [http://vmap.phodal.com/](http://vmap.phodal.com/)
 
-原文链接：[https://www.phodal.com/blog/create-github-o2o-application-map-with-province-city/](https://www.phodal.com/blog/create-github-o2o-application-map-with-province-city/)
+欢迎关注我的微信公众号搜索 Phodal
+
+![QRCode](http://articles.phodal.com/qrcode.jpg)
+

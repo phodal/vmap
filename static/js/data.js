@@ -152,6 +152,11 @@ define(function () {
             username: "codecly259",
             latLang: [31.778115,117.1668593]
         }
+        {
+            name: "吴钧泽",
+            username: "wujunze",
+            latLang: [39.972524,116.5040100]
+        }
     ];
 
     

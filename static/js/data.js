@@ -151,7 +151,7 @@ define(function () {
             name: "马新春",
             username: "codecly259",
             latLang: [31.778115,117.1668593]
-        }
+        },
         {
             name: "吴钧泽",
             username: "wujunze",
